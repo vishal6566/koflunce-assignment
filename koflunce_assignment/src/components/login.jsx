@@ -1,6 +1,9 @@
 import React from "react";
+import "../styles/login.css"
 import { useState } from "react";
 import {useNavigate} from "react-router-dom"
+import { Link } from "react-router-dom";
+
 const Login = () => {
   const [loginData, setLoginData] = useState({
     email: "",
@@ -34,6 +37,7 @@ const navigate=useNavigate()
         );
 
         if (!response.ok) {
+
           console.log("User not found");
           return;
         }
@@ -44,15 +48,16 @@ const navigate=useNavigate()
           userData.length === 1 &&
           userData[0].password === loginData.password
         ) {
-          console.log("User logged in successfully:", userData[0]);
-           // Save user data to local storage
+          
   localStorage.setItem("loggedInUser", JSON.stringify(userData[0]));
+  alert("User logged in successfully");
   navigate("/user")
         } else {
-          console.log("Invalid credentials");
+          alert("Invalid credentials");
         }
       } catch (error) {
         console.error("Error fetching data:", error);
+       
       }
 
       // Clear the login form after login attempt
@@ -68,34 +73,39 @@ const navigate=useNavigate()
     setLoginData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="text"
-            name="email"
-            value={loginData.email}
-            onChange={handleInputChange}
-          />
-          {errors.email && <span className="error">{errors.email}</span>}
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={loginData.password}
-            onChange={handleInputChange}
-          />
-          {errors.password && <span className="error">{errors.password}</span>}
-        </div>
-
-        <button type="submit">Login</button>
-      </form>
-    </div>
+  return (<div>
+  <div  className="login-container">
+        
+        <h2  className="login-title">Login</h2>
+        <form  className="login-form" onSubmit={handleLogin}>
+          <div>
+            <label>Email:</label>
+            <input
+              type="text"
+              name="email"
+              value={loginData.email}
+              onChange={handleInputChange}
+            />
+            {errors.email && <span className="error">{errors.email}</span>}
+          </div>
+          <div>
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={loginData.password}
+              onChange={handleInputChange}
+            />
+            {errors.password && <span className="error">{errors.password}</span>}
+          </div>
+  
+          <button type="submit">Login</button>
+          <p>New User? <Link to="/">Register </Link></p>
+        </form>
+      </div>
+    
+  </div>
+  
   );
 };
 

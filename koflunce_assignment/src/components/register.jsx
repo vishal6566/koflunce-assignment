@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios"
 import {useNavigate} from "react-router-dom"
+import "../styles/register.css"
+import { Link } from "react-router-dom";
 const Register = () => {
   const [formData, setFormData] = useState({
     id:Date.now(),
@@ -45,7 +47,7 @@ const Register = () => {
         axios
         .post("https://user-register-ubmr.onrender.com/users",formData)
         .then((res) => {
-          console.log(res)
+          alert("Registered successfully")
          navigate("/login")
         })
         .catch((err) => {
@@ -74,9 +76,9 @@ setFormData({
   };
 
   return (
-    <div>
-      <h2>Registration</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="registration-container">
+      <h2 className="registration-title">Registration</h2>
+      <form className="registration-form" onSubmit={handleSubmit}>
         <div>
           <label>Name:</label>
           <input
@@ -163,6 +165,7 @@ setFormData({
 
 
         <button type="submit">Register</button>
+        <p>Already Register?  <Link to="/login">Login </Link></p>
       </form>
     </div>
   );
