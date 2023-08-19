@@ -49,9 +49,20 @@ const Register = () => {
         .catch((err) => {
           console.log(err)
         });
-
+setFormData({
+    
+    name: "",
+    email: "",
+    password: "",
+    mobile: "",
+    age: "",
+    address: "",
+    gender: "",
+    occupation: "",
+  })
      
     }
+
   };
  
 
