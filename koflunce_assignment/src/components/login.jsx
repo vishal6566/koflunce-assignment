@@ -1,11 +1,12 @@
 import React from "react";
 import { useState } from "react";
+import {useNavigate} from "react-router-dom"
 const Login = () => {
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
-
+const navigate=useNavigate()
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
@@ -46,6 +47,7 @@ const Login = () => {
           console.log("User logged in successfully:", userData[0]);
            // Save user data to local storage
   localStorage.setItem("loggedInUser", JSON.stringify(userData[0]));
+  navigate("/user")
         } else {
           console.log("Invalid credentials");
         }

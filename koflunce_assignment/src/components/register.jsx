@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios"
+import {useNavigate} from "react-router-dom"
 const Register = () => {
   const [formData, setFormData] = useState({
     id:Date.now(),
@@ -13,6 +14,7 @@ const Register = () => {
     gender: "",
     occupation: "",
   });
+  const navigate=useNavigate()
 
   const [errors, setErrors] = useState({});
 
@@ -44,7 +46,7 @@ const Register = () => {
         .post("https://user-register-ubmr.onrender.com/users",formData)
         .then((res) => {
           console.log(res)
-         
+         navigate("/login")
         })
         .catch((err) => {
           console.log(err)
