@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import "../styles/user.css"
 import { Link } from "react-router-dom";
 const User = () => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem("loggedInUser")));
@@ -18,8 +19,9 @@ const User = () => {
     </div>;
   }
   return (
-    <div>
-    <h2>User Details</h2>
+    <div className="user-container">
+    <h2 className="user-title">User Details</h2>
+    <div className='user-details'>
     <div>
       <strong>Name:</strong> {user.name}
     </div>
@@ -34,6 +36,8 @@ const User = () => {
       </button>
     </div>
     <button onClick={handleLogout}>Logout</button>
+    </div>
+    
   </div>
   )
 }
