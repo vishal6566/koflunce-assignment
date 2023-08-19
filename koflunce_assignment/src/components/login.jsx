@@ -9,6 +9,9 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertType, setAlertType] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
 const navigate=useNavigate()
   const [errors, setErrors] = useState({});
 
