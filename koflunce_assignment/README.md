@@ -12,6 +12,6 @@ User can login here .
 
 ## Userdetails Page
 
-![UserDetailsPage](static/images/userDetailsPage.png)
+![UserDetailsPage](static/images/userDetails.png)
 
 User can see their details  here .
